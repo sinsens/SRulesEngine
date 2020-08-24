@@ -29,7 +29,10 @@ namespace SRulesEngine
         /// </summary>
         private static readonly int CacheAlive = 60;
 
-        private static bool EnableCache { get => enableCache != "disabled"; }
+        private static bool EnableCache
+        {
+            get { return enableCache != "disabled"; }
+        }
 
 #endif
 
@@ -78,7 +81,8 @@ namespace SRulesEngine
                             try
                             {
                                 object value = item.Value;
-                                if (int.TryParse(item.Value, out int result))
+                                int result;
+                                if (int.TryParse(item.Value, out result))
                                 {
                                     mb.SetValue(new ExpressionCompiler(), result);
                                 }
